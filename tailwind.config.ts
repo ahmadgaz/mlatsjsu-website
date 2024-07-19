@@ -10,22 +10,6 @@ const config: Config = {
     screens: {
       lg: '1176px',
     },
-    padding: {
-      xs: '4px',
-      sm: '8px',
-      md: '16px',
-      lg: '24px',
-      xl: '32px',
-      xxl: '64px',
-    },
-    gap: {
-      xs: '4px',
-      sm: '8px',
-      md: '16px',
-      lg: '24px',
-      xl: '32px',
-      xxl: '64px',
-    },
     colors: {
       light: {
         primary: 'rgb(var(--color-light-primary))',
@@ -44,6 +28,9 @@ const config: Config = {
       sm: '11px',
       md: '22px',
       lg: '44px',
+    },
+    borderWidth: {
+      'line-width': '2.5px',
     },
     fontSize: {
       'h1-mobile-lg': [
@@ -113,28 +100,14 @@ const config: Config = {
       'small-sm-bold': ['11.1px', { lineHeight: '1.6em', fontWeight: 700 }],
     },
     extend: {
-      borderWidth: {
-        'line-width': '2.5px',
-      },
-      minWidth: {
-        'line-width': '2.5px',
-        'line-mobile': '32px',
-        'line-desktop': '112px',
-      },
-      width: {
-        'line-width': '2.5px',
-        'line-mobile': '32px',
-        'line-desktop': '112px',
-      },
-      maxWidth: {
+      spacing: {
+        xs: '4px',
+        sm: '8px',
+        md: '16px',
+        lg: '24px',
+        xl: '32px',
+        xxl: '64px',
         desktop: '1176px',
-      },
-      minHeight: {
-        'line-width': '2.5px',
-        'line-mobile': '32px',
-        'line-desktop': '112px',
-      },
-      height: {
         'line-width': '2.5px',
         'line-mobile': '32px',
         'line-desktop': '112px',
