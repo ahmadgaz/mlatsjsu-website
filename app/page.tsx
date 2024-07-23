@@ -17,16 +17,13 @@ import discordIcon from '@/assets/discord-icon.svg';
 import instagramIcon from '@/assets/instagram-icon.svg';
 import youtubeIcon from '@/assets/youtube-icon.svg';
 import linkedInIcon from '@/assets/linkedin-icon.svg';
-import Button from '@/components/button';
+import LinkButton from '@/components/link-button';
 import { MapPinIcon } from '@heroicons/react/20/solid';
 import { CalendarDaysIcon } from '@heroicons/react/20/solid';
 
 export default function Home() {
   return (
     <main>
-      {/* Mobile Nav Spacer */}
-      <div className="h-[80px] lg:hidden" />
-
       {/* Hero */}
       <section className="mx-auto flex w-full max-w-desktop items-stretch">
         <VerticalLine hasTopCap />
@@ -48,11 +45,13 @@ export default function Home() {
               </em>{' '}
             </p>
             <div className="flex w-full py-sm max-lg:flex-col max-lg:items-center max-lg:gap-sm lg:gap-lg">
-              <Button type="primary" color="#5865F2">
+              <LinkButton href="/" type="primary" color="#5865F2">
                 <Image src={discordIcon} alt="discord-icon" />
                 Join Our Discord
-              </Button>
-              <Button type="secondary">Become an Official Member</Button>
+              </LinkButton>
+              <LinkButton href="/" type="secondary">
+                Become an Official Member
+              </LinkButton>
             </div>
             <div className="flex w-full py-sm text-light-neutral-dark max-lg:flex-wrap max-lg:justify-center max-lg:gap-md lg:gap-lg">
               <span className="flex items-center gap-sm whitespace-nowrap text-button">
@@ -143,56 +142,81 @@ export default function Home() {
           <p className="w-full text-light-neutral-dark max-lg:pb-md max-lg:text-h5-mobile lg:pb-xl lg:text-h5-desktop">
             Checkout these spotlights of our events.
           </p>
-          <div className="flex w-full flex-col gap-md">
-            <div className="flex w-full gap-md max-lg:flex-col max-lg:items-stretch">
-              <div className="flex h-[500px] flex-col items-center justify-center rounded-md border-line-width border-dashed border-light-neutral-gray bg-light-neutral-white p-xl lg:w-[300px]">
-                <h3 className="w-full text-center text-light-neutral-dark max-lg:text-h3-mobile lg:text-h3-desktop">
-                  Pumpkin Patch Social
-                </h3>
-              </div>
-              <Image
-                className="min-h-0 min-w-0 flex-1 rounded-md border-line-width border-dashed border-light-neutral-gray object-cover"
-                src={pumpkinPatchOne}
-                alt="pumpkin-patch-1"
-              />
-            </div>
-            <div className="flex w-full gap-md max-lg:flex-col max-lg:items-stretch">
-              <Image
-                className="min-h-0 min-w-0 flex-1 rounded-md border-line-width border-dashed border-light-neutral-gray object-cover"
-                src={pumpkinPatchTwo}
-                alt="pumpkin-patch-2"
-              />
-              <Image
-                className="h-[500px] min-h-0 min-w-0 rounded-md border-line-width border-dashed border-light-neutral-gray object-cover lg:w-[300px]"
-                src={pumpkinPatchThree}
-                alt="pumpkin-patch-3"
-              />
-            </div>
-            <div className="flex w-full gap-md max-lg:flex-col max-lg:items-stretch">
-              <div className="flex h-[500px] flex-col items-center justify-center rounded-md border-line-width border-dashed border-light-neutral-gray bg-light-neutral-white p-xl lg:w-[300px]">
-                <h3 className="w-full text-center text-light-neutral-dark max-lg:text-h3-mobile lg:text-h3-desktop">
-                  Intel Museum
-                </h3>
-              </div>
-              <Image
-                className="min-h-0 min-w-0 flex-1 rounded-md border-line-width border-dashed border-light-neutral-gray object-cover"
-                src={intelMuseumOne}
-                alt="intel-museum-1"
-              />
-            </div>
-            <div className="flex w-full gap-md max-lg:flex-col max-lg:items-stretch">
-              <Image
-                className="min-h-0 min-w-0 flex-1 rounded-md border-line-width border-dashed border-light-neutral-gray object-cover"
-                src={intelMuseumTwo}
-                alt="intel-museum-2"
-              />
-              <Image
-                className="h-[500px] min-h-0 min-w-0 rounded-md border-line-width border-dashed border-light-neutral-gray object-cover lg:w-[400px]"
-                src={intelMuseumThree}
-                alt="intel-museum-3"
-              />
-            </div>
-          </div>
+
+          <ul className="flex w-full flex-col gap-md">
+            <li>
+              <ul className="flex w-full flex-wrap gap-md">
+                <li className="h-[500px] flex-1">
+                  <div
+                    key={1}
+                    className="flex h-full items-center justify-center rounded-md border-line-width border-dashed border-light-neutral-dark bg-light-neutral-white p-xl lg:w-[300px]"
+                  >
+                    <h3 className="w-full text-center text-light-neutral-dark max-lg:text-h3-mobile lg:text-h3-desktop">
+                      Pumpkin Patch Social
+                    </h3>
+                  </div>
+                </li>
+                {[
+                  {
+                    src: pumpkinPatchOne,
+                    alt: 'pumpkin-patch-1',
+                  },
+                  {
+                    src: pumpkinPatchTwo,
+                    alt: 'pumpkin-patch-2',
+                  },
+                  {
+                    src: pumpkinPatchThree,
+                    alt: 'pumpkin-patch-3',
+                  },
+                ].map((item, i) => (
+                  <li key={i} className="h-[500px] flex-1">
+                    <Image
+                      className="h-full w-full min-w-[300px] rounded-md border-line-width border-dashed border-light-neutral-dark bg-light-neutral-gray object-cover align-bottom"
+                      src={item.src}
+                      alt={item.alt}
+                    />
+                  </li>
+                ))}
+              </ul>
+            </li>
+            <li>
+              <ul className="flex w-full flex-wrap gap-md">
+                <li className="h-[500px] flex-1">
+                  <div
+                    key={1}
+                    className="flex h-full items-center justify-center rounded-md border-line-width border-dashed border-light-neutral-dark bg-light-neutral-white p-xl lg:w-[300px]"
+                  >
+                    <h3 className="w-full text-center text-light-neutral-dark max-lg:text-h3-mobile lg:text-h3-desktop">
+                      Intel Museum Tour
+                    </h3>
+                  </div>
+                </li>
+                {[
+                  {
+                    src: intelMuseumOne,
+                    alt: 'intel-museum-1',
+                  },
+                  {
+                    src: intelMuseumTwo,
+                    alt: 'intel-museum-2',
+                  },
+                  {
+                    src: intelMuseumThree,
+                    alt: 'intel-museum-3',
+                  },
+                ].map((item, i) => (
+                  <li key={i} className="h-[500px] flex-1">
+                    <Image
+                      className="h-full w-full min-w-[300px] rounded-md border-line-width border-dashed border-light-neutral-dark bg-light-neutral-gray object-cover align-bottom"
+                      src={item.src}
+                      alt={item.alt}
+                    />
+                  </li>
+                ))}
+              </ul>
+            </li>
+          </ul>
         </div>
         <div className="max-lg:min-w-line-mobile lg:min-w-line-desktop" />
       </section>
@@ -209,23 +233,23 @@ export default function Home() {
             announced.
           </p>
           <div className="flex w-full gap-lg py-sm max-lg:flex-col">
-            <Button type="primary" color="#5865F2">
+            <LinkButton href="/" type="primary" color="#5865F2">
               <Image src={discordIcon} alt="discord-icon" />
               Discord
-            </Button>
-            <Button type="primary" color="#C13584">
+            </LinkButton>
+            <LinkButton href="/" type="primary" color="#C13584">
               <Image src={instagramIcon} alt="instagram-icon" />
               Instagram
-            </Button>
-            <Button type="primary" color="#F61C0D">
+            </LinkButton>
+            <LinkButton href="/" type="primary" color="#F61C0D">
               <Image src={youtubeIcon} alt="youtube-icon" />
               YouTube
-            </Button>
+            </LinkButton>
 
-            <Button type="primary" color="#0E76AB">
+            <LinkButton href="/" type="primary" color="#0E76AB">
               <Image src={linkedInIcon} alt="linkedin-icon" />
               LinkedIn
-            </Button>
+            </LinkButton>
           </div>
         </div>
         <div className="max-lg:min-w-line-mobile lg:min-w-line-desktop" />

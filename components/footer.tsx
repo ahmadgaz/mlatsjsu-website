@@ -1,7 +1,10 @@
+'use client';
 import Image from 'next/image';
 
 import footerLogoDs from '@/assets/footer-logo-ds.svg';
 import footerLogoMb from '@/assets/footer-logo-mb.svg';
+import SessionWrapper from './session-wrapper';
+import AuthButtons from './auth-buttons';
 
 const Footer: React.FC = () => {
   return (
@@ -13,7 +16,10 @@ const Footer: React.FC = () => {
         className="max-lg:hidden"
       />
       <p className="text-center max-lg:text-h6-mobile lg:text-h6-desktop">
-        Machine Learning at SJSU © 2024. All rights reserved.
+        Machine Learning at SJSU © 2024. All rights reserved.{' '}
+        <SessionWrapper>
+          <AuthButtons />
+        </SessionWrapper>
       </p>
     </footer>
   );

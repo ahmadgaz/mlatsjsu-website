@@ -1,14 +1,25 @@
 import clsx from 'clsx';
+import Link from 'next/link';
 
-interface ButtonProps {
+interface LinkButtonProps {
   children: React.ReactNode;
+  href: string;
+  onClick?: () => void;
   type: 'primary' | 'secondary' | 'ghost';
   color?: string;
 }
 
-const Button: React.FC<ButtonProps> = ({ children, type, color }) => {
+const LinkButton: React.FC<LinkButtonProps> = ({
+  children,
+  href,
+  onClick,
+  type,
+  color,
+}) => {
   return (
-    <button
+    <Link
+      href={href}
+      onClick={onClick}
       className={clsx(
         'flex items-center justify-center gap-sm rounded-md py-sm text-button transition-all duration-100 ease-in-out max-lg:w-full',
         {
@@ -25,8 +36,8 @@ const Button: React.FC<ButtonProps> = ({ children, type, color }) => {
       }}
     >
       {children}
-    </button>
+    </Link>
   );
 };
 
-export default Button;
+export default LinkButton;

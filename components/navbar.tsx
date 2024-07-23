@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import Button from '@/components/button';
+import LinkButton from '@/components/link-button';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
 
 import navLogoMb from '@/assets/nav-logo-mb.svg';
@@ -16,9 +16,15 @@ const Navbar: React.FC = () => {
   const [isOpenMenu, setIsOpenMenu] = React.useState(false);
   const toggleMenu = () => setIsOpenMenu(!isOpenMenu);
   return (
-    <header className="mx-auto flex w-full max-w-desktop items-stretch justify-between gap-xl bg-light-background text-button text-light-primary max-lg:fixed max-lg:z-50 max-lg:min-h-[80px] max-lg:bg-[rgb(var(--color-light-background)/0.75)] max-lg:px-md max-lg:py-lg max-lg:backdrop-blur-lg lg:px-line-desktop lg:py-xxl">
-      {/* Mobile Logo and Menu Toggle */}
-      <Image className="lg:hidden" src={navLogoMb} alt="nav-logo-mb" />
+    <header className="mx-auto flex w-full max-w-desktop items-center justify-between gap-xl bg-light-background text-button text-light-primary max-lg:fixed max-lg:z-50 max-lg:min-h-[80px] max-lg:bg-[rgb(var(--color-light-background)/0.75)] max-lg:px-md max-lg:py-lg max-lg:backdrop-blur-lg lg:px-line-desktop lg:py-xxl">
+      <Link href="/">
+        {/* Mobile Logo */}
+        <Image className="lg:hidden" src={navLogoMb} alt="nav-logo-mb" />
+        {/* Desktop Logo */}
+        <Image className="max-lg:hidden" src={navLogoDs} alt="nav-logo-ds" />
+      </Link>
+
+      {/* Mobile Menu Toggle */}
       <button
         className="duraiton-100 transition-all ease-in-out hover:opacity-75 lg:hidden"
         onClick={toggleMenu}
@@ -29,9 +35,6 @@ const Navbar: React.FC = () => {
           <Bars3Icon width={24} height={24} />
         )}
       </button>
-
-      {/* Desktop Logo */}
-      <Image className="max-lg:hidden" src={navLogoDs} alt="nav-logo-ds" />
 
       {/* Nav */}
       <ul
@@ -48,8 +51,9 @@ const Navbar: React.FC = () => {
           <nav className="flex gap-lg max-lg:flex-col max-lg:items-center">
             {['About', 'Projects', 'Events', 'Resources'].map((link, i) => (
               <Link
+                onClick={toggleMenu}
                 className="transition-all duration-100 ease-in-out hover:opacity-75"
-                href={`/${link}`}
+                href={`/${link.toLowerCase()}`}
                 key={i}
               >
                 {link}
@@ -58,10 +62,10 @@ const Navbar: React.FC = () => {
           </nav>
         </li>
         <li>
-          <Button type="ghost">
+          <LinkButton href="/sponsor" onClick={toggleMenu} type="ghost">
             <MegaphoneIcon width={20} height={20} />
             Sponsor Us
-          </Button>
+          </LinkButton>
         </li>
         <li className="flex flex-1 flex-col justify-end lg:hidden">
           <Footer />

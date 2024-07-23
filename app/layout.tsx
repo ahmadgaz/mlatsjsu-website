@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description: 'The official website for the Machine Learning Club at SJSU',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -22,6 +22,8 @@ export default function RootLayout({
         className={`${inter.className} bg-light-background text-light-text`}
       >
         <Navbar />
+        {/* Mobile Nav Spacer */}
+        <div className="h-[80px] lg:hidden" />
         {children}
         <Footer />
       </body>
