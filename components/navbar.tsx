@@ -17,7 +17,7 @@ const Navbar: React.FC = () => {
   const toggleMenu = () => setIsOpenMenu(!isOpenMenu);
   return (
     <header className="mx-auto flex w-full max-w-desktop items-center justify-between gap-xl bg-light-background text-button text-light-primary max-lg:fixed max-lg:z-50 max-lg:min-h-[80px] max-lg:bg-[rgb(var(--color-light-background)/0.75)] max-lg:px-md max-lg:py-lg max-lg:backdrop-blur-lg lg:px-line-desktop lg:py-xxl">
-      <Link href="/">
+      <Link href="/" onClick={toggleMenu}>
         {/* Mobile Logo */}
         <Image className="lg:hidden" src={navLogoMb} alt="nav-logo-mb" />
         {/* Desktop Logo */}
